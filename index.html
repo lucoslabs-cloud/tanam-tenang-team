@@ -1,0 +1,1177 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>TanamTenang Team Reference</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: tabbed booklet, header sticky, main content area scrolls */
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --surface2: #f0ede7;
+  --border: #e2ddd6;
+  --fg: #1a1915;
+  --fg-soft: #5a564e;
+  --fg-faint: #9a9690;
+  --accent: #2d6a4f;
+  --accent-soft: #d8ede4;
+  --accent-mid: #40916c;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --info: #1d4ed8;
+  --info-soft: #dbeafe;
+  --tag-geo: #0369a1;
+  --tag-geo-soft: #e0f2fe;
+  --tag-clim: #7c3aed;
+  --tag-clim-soft: #ede9fe;
+  --tag-agri: #166534;
+  --tag-agri-soft: #dcfce7;
+  --tag-it: #c2410c;
+  --tag-it-soft: #ffedd5;
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12110e;
+    --surface: #1c1b17;
+    --surface2: #242319;
+    --border: #2e2c27;
+    --fg: #f0ede7;
+    --fg-soft: #a8a39a;
+    --fg-faint: #6a665e;
+    --accent: #52b788;
+    --accent-soft: #1a3d2b;
+    --accent-mid: #74c69d;
+    --warn: #fbbf24;
+    --warn-soft: #2a1f05;
+    --danger: #f87171;
+    --info: #60a5fa;
+    --info-soft: #1e2f4a;
+    --tag-geo: #38bdf8;
+    --tag-geo-soft: #0c2235;
+    --tag-clim: #a78bfa;
+    --tag-clim-soft: #2d1a4a;
+    --tag-agri: #4ade80;
+    --tag-agri-soft: #0a2a15;
+    --tag-it: #fb923c;
+    --tag-it-soft: #3a1500;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12110e; --surface: #1c1b17; --surface2: #242319; --border: #2e2c27;
+  --fg: #f0ede7; --fg-soft: #a8a39a; --fg-faint: #6a665e;
+  --accent: #52b788; --accent-soft: #1a3d2b; --accent-mid: #74c69d;
+  --warn: #fbbf24; --warn-soft: #2a1f05; --danger: #f87171;
+  --info: #60a5fa; --info-soft: #1e2f4a;
+  --tag-geo: #38bdf8; --tag-geo-soft: #0c2235;
+  --tag-clim: #a78bfa; --tag-clim-soft: #2d1a4a;
+  --tag-agri: #4ade80; --tag-agri-soft: #0a2a15;
+  --tag-it: #fb923c; --tag-it-soft: #3a1500;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+  padding-right: max(0px, env(safe-area-inset-right, 0px));
+}
+
+/* ---- Header ---- */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 11;
+  background: var(--accent);
+}
+.site-header h1 {
+  font-family: var(--font-head);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.site-header .subtitle {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* ---- Tab bar ---- */
+.tab-bar {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 45px);
+  z-index: 9;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-soft);
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--fg); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-btn .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* ---- Tab panels ---- */
+.panel { display: none; padding: 24px max(16px, env(safe-area-inset-left, 0px)); }
+.panel.active { display: block; }
+
+/* ---- Shared layout ---- */
+.section-title {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-faint);
+  margin-bottom: 10px;
+  margin-top: 24px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.section-title:first-child { margin-top: 0; }
+
+h2 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  text-wrap: balance;
+}
+h3 {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 20px;
+  color: var(--fg);
+}
+h3:first-child { margin-top: 0; }
+p { margin-bottom: 10px; color: var(--fg-soft); }
+p:last-child { margin-bottom: 0; }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.card-grid .card { margin-bottom: 0; }
+
+/* ---- Key numbers ---- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.kpi .num {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.kpi .lbl {
+  font-size: 11px;
+  color: var(--fg-soft);
+  margin-top: 3px;
+  display: block;
+  line-height: 1.3;
+}
+
+/* ---- Tables ---- */
+.tbl-wrap { overflow-x: auto; margin-bottom: 16px; }
+table { width: 100%; border-collapse: collapse; min-width: 0; font-size: 13px; }
+th {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-faint);
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--fg-soft);
+}
+td:first-child { color: var(--fg); font-weight: 500; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--surface2); }
+
+/* ---- Badges / chips ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.badge-geo { background: var(--tag-geo-soft); color: var(--tag-geo); border-color: var(--tag-geo); }
+.badge-clim { background: var(--tag-clim-soft); color: var(--tag-clim); border-color: var(--tag-clim); }
+.badge-agri { background: var(--tag-agri-soft); color: var(--tag-agri); border-color: var(--tag-agri); }
+.badge-it { background: var(--tag-it-soft); color: var(--tag-it); border-color: var(--tag-it); }
+.badge-warn { background: var(--warn-soft); color: var(--warn); border-color: var(--warn); }
+
+/* ---- Tag chips for metrics ---- */
+.chip { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--border); background: var(--surface2); color: var(--fg-soft); margin: 1px 2px 1px 0; }
+
+/* ---- Alert box ---- */
+.alert {
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.alert-warn { background: var(--warn-soft); color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 25%, transparent); }
+.alert-info { background: var(--info-soft); color: var(--info); border: 1px solid color-mix(in srgb, var(--info) 25%, transparent); }
+.alert-accent { background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
+.alert .icon { font-size: 15px; flex-shrink: 0; }
+
+/* ---- Metric list ---- */
+.metric-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 12px; }
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12.5px;
+}
+.metric-row:nth-child(odd) { background: var(--surface2); }
+.metric-name { color: var(--fg); font-weight: 500; }
+.metric-unit { color: var(--fg-faint); font-size: 11px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---- Term / definition ---- */
+dl.terms { display: grid; grid-template-columns: auto 1fr; gap: 2px 16px; margin-bottom: 14px; }
+dt { font-weight: 600; font-size: 12.5px; padding: 4px 0; color: var(--fg); }
+dd { font-size: 12.5px; padding: 4px 0; color: var(--fg-soft); border-bottom: 1px solid var(--border); }
+dt:last-of-type { border-bottom: none; }
+@media (max-width: 500px) {
+  dl.terms { grid-template-columns: 1fr; }
+  dt { padding-bottom: 0; }
+  dd { border-top: none; }
+}
+
+/* ---- Code ---- */
+code {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--accent-mid);
+}
+pre {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin-bottom: 14px;
+  color: var(--fg-soft);
+}
+
+/* ---- Scenario table ---- */
+.scenario-tbl td.up { color: var(--danger); font-weight: 600; }
+.scenario-tbl td.dn { color: var(--info); font-weight: 600; }
+
+/* ---- Q&A callout ---- */
+.qa-block {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 7px 7px 0;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.qa-q { font-weight: 600; font-size: 13px; color: var(--fg); margin-bottom: 4px; }
+.qa-q::before { content: "Q: "; color: var(--accent); }
+.qa-a { font-size: 12.5px; color: var(--fg-soft); }
+.qa-a::before { content: "A: "; font-weight: 600; color: var(--fg); }
+
+/* ---- Model table ---- */
+.ecs-bar {
+  display: inline-block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--accent);
+  opacity: 0.7;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* Glossary */
+.gloss-entry { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.gloss-entry:last-child { border-bottom: none; }
+.gloss-term { font-family: var(--font-head); font-size: 14px; font-weight: 600; color: var(--fg); display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.gloss-def { font-size: 12.5px; color: var(--fg-soft); line-height: 1.6; }
+
+/* Search */
+.search-box {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 13px;
+  margin-bottom: 16px;
+  outline: none;
+}
+.search-box:focus { border-color: var(--accent); }
+.search-box::placeholder { color: var(--fg-faint); }
+.hidden-gloss { display: none; }
+
+@media (max-width: 600px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .card-grid { grid-template-columns: 1fr; }
+  h2 { font-size: 17px; }
+}
+</style>
+
+<header class="site-header">
+  <h1>TanamTenang — Team Reference Booklet</h1>
+  <span class="subtitle">NASA Space Apps 2026 · Sri Aman, Sarawak · Q&amp;A quick-reference</span>
+</header>
+
+<div class="tab-bar" role="tablist">
+  <button class="tab-btn active" data-tab="all" role="tab">
+    <span class="dot" style="background:#2d6a4f"></span>All Teams
+  </button>
+  <button class="tab-btn" data-tab="geo" role="tab">
+    <span class="dot" style="background:#0369a1"></span>Geospatial
+  </button>
+  <button class="tab-btn" data-tab="clim" role="tab">
+    <span class="dot" style="background:#7c3aed"></span>Climate &amp; Met
+  </button>
+  <button class="tab-btn" data-tab="agri" role="tab">
+    <span class="dot" style="background:#166534"></span>Agriculture
+  </button>
+  <button class="tab-btn" data-tab="it" role="tab">
+    <span class="dot" style="background:#c2410c"></span>IT
+  </button>
+  <button class="tab-btn" data-tab="gloss" role="tab">
+    <span class="dot" style="background:#6b7280"></span>Glossary
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════ ALL TEAMS ═══════════════════════════ -->
+<div class="panel active" id="tab-all">
+
+  <p class="section-title">Platform at a glance</p>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="num">67,855</span><span class="lbl">grid cells across Sri Aman</span></div>
+    <div class="kpi"><span class="num">44</span><span class="lbl">environmental metrics scored</span></div>
+    <div class="kpi"><span class="num">31</span><span class="lbl">crops &amp; enterprises in catalogue</span></div>
+    <div class="kpi"><span class="num">7</span><span class="lbl">climate scenarios (1 baseline + 6 future)</span></div>
+    <div class="kpi"><span class="num">6</span><span class="lbl">CMIP6 climate models</span></div>
+    <div class="kpi"><span class="num">5</span><span class="lbl">farmer priority presets</span></div>
+  </div>
+
+  <p class="section-title">What the platform does</p>
+  <div class="card">
+    <p>TanamTenang is a farm-adaptation decision-support tool for Sri Aman district, Sarawak. It scores every 250 m grid cell in the district for agricultural suitability — today and under six future climate scenarios — and helps farmers choose what to grow and how to rotate crops. It is built entirely from open, public datasets; every number on screen names its source.</p>
+  </div>
+
+  <p class="section-title">Suitability classes (FAO land evaluation)</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Name</th><th>Score threshold</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-agri">S1</span></td><td>Highly Suitable</td><td>≥ 85</td><td>No significant limitations for sustained production</td></tr>
+        <tr><td><span class="badge" style="background:var(--accent-soft);color:var(--accent-mid);border-color:var(--accent-mid)">S2</span></td><td>Moderately Suitable</td><td>≥ 70</td><td>Moderate limitations, manageable with inputs</td></tr>
+        <tr><td><span class="badge badge-warn">S3</span></td><td>Marginally Suitable</td><td>≥ 50</td><td>Significant limitations; requires careful management</td></tr>
+        <tr><td><span class="badge" style="background:var(--warn-soft);color:#92400e;border-color:#92400e">N1</span></td><td>Currently Not Suitable</td><td>≥ 25</td><td>Limitations cannot be overcome with current technology</td></tr>
+        <tr><td><span class="badge" style="background:#fef2f2;color:var(--danger);border-color:var(--danger)">N2</span></td><td>Permanently Not Suitable</td><td>&lt; 25</td><td>Permanent limitations; not recommended</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Data sources — quick map</p>
+  <div class="card-grid">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-clim">NASA POWER</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> 45-year daily climate record (1976–2020), MERRA-2 met + CERES solar. <strong>Resolution:</strong> ~55×69 km. <strong>Provides:</strong> all 17 climate metrics.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-geo">NASA SRTM</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> Shuttle Radar Topography Mission, 30 m elevation. <strong>Provides:</strong> slope, aspect, TWI, HAND, flood hazard, distance to water, erosion exposure (slope component).</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-geo">ISRIC SoilGrids 2.0</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> ML-predicted soil properties, 250 m, trained on ~240,000 profiles. <strong>Provides:</strong> pH, texture (clay/sand/silt), SOC, CEC, bulk density, nitrogen, peat depth.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-clim">NASA SMAP L4</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> Satellite soil moisture, 9 km. <strong>Provides:</strong> mean soil moisture, dry-season soil moisture.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-geo">NASA MODIS</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> Multi-sensor earth observation. <strong>Provides:</strong> NDVI mean &amp; amplitude (MOD13Q1, 250 m), land cover (MCD12Q1, 500 m), land surface temperature (MOD11A2, 1 km).</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="badge badge-clim">NASA NEX-GDDP-CMIP6</span></div>
+      <p style="margin:0;font-size:12.5px"><strong>What:</strong> Bias-corrected daily CMIP6 runs, 0.25°. <strong>Provides:</strong> 6 future climate scenarios via delta change method.</p>
+    </div>
+  </div>
+
+  <p class="section-title">What is NOT in the scoring (but declared)</p>
+  <div class="alert alert-warn">
+    <span class="icon">⚠</span>
+    <div>
+      <strong>Registered, carrying nothing:</strong> GPM IMERG (rainfall satellite), ESA WorldCover, MODIS ET (MOD16A2), GRACE-FO (groundwater). All four have a DOI, a citation, and column slots in the database — every column is NULL for all 67,855 cells. We disclosed them so anyone auditing the platform can see what was intended and what was not delivered, rather than discovering a silent gap.
+    </div>
+  </div>
+
+  <p class="section-title">Likely Q&amp;A — everyone should know</p>
+  <div class="qa-block">
+    <div class="qa-q">What is the baseline "Today"?</div>
+    <div class="qa-a">The 1991–2020 climate normal from NASA POWER. Thirty years of observed daily weather, averaged into monthly statistics for each metric.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Why Sri Aman specifically?</div>
+    <div class="qa-a">It was chosen as the pilot district because it represents a mix of lowland agriculture (wet paddy, oil palm), peat soil challenges, and smallholder farming common across Sarawak's interior. The same pipeline can be re-run for any district.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Is the data free and public?</div>
+    <div class="qa-a">Yes. Every dataset used is publicly available from its source agency (NASA, ISRIC, OCHA). No licensing fees, no proprietary data, no field surveys.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ GEOSPATIAL ═══════════════════════════ -->
+<div class="panel" id="tab-geo">
+
+  <p class="section-title">Your domain — Geospatial Head</p>
+  <div class="alert alert-info">
+    <span class="icon">ℹ</span>
+    <div>Cover the data sources, resolutions, how the grid was built, and the derived metrics. Know which metrics came from measurement vs calculation.</div>
+  </div>
+
+  <h3>The grid</h3>
+  <div class="card">
+    <p>The district is divided into <strong>67,855 cells at 250 m resolution</strong>, matching SoilGrids 2.0's native resolution — the coarsest scored dataset that varies meaningfully at that scale. Each cell is one row in the <code>grid_cells</code> database table. The boundary is from OCHA COD-AB (the UN's Common Operational Datasets – Administrative Boundaries for Sri Aman).</p>
+    <p>Climate values are not stored per cell. They come from the nearest NASA POWER point at query time, which is why the same cell shows different climate numbers under different scenarios without re-ingesting.</p>
+  </div>
+
+  <h3>Data sources — resolutions &amp; roles</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Dataset</th><th>Native resolution</th><th>Role in platform</th><th>Access</th></tr></thead>
+      <tbody>
+        <tr><td>NASA SRTM (srtmgl1)</td><td>30 m (1 arc-sec)</td><td>All terrain metrics; distance to water</td><td>NASA EarthData, free</td></tr>
+        <tr><td>ISRIC SoilGrids 2.0</td><td>250 m</td><td>All 12 soil metrics</td><td>ISRIC REST API, free</td></tr>
+        <tr><td>MODIS MOD13Q1 (NDVI)</td><td>250 m</td><td>NDVI mean, NDVI amplitude</td><td>NASA EarthData ORNL DAAC</td></tr>
+        <tr><td>MODIS MCD12Q1 (land cover)</td><td>500 m</td><td>Land cover class</td><td>NASA EarthData ORNL DAAC</td></tr>
+        <tr><td>MODIS MOD11A2 (LST)</td><td>1 km</td><td>Daytime land surface temperature</td><td>NASA EarthData</td></tr>
+        <tr><td>NASA SMAP L4</td><td>9 km</td><td>Soil moisture (mean, dry-season)</td><td>NASA EarthData NSIDC</td></tr>
+        <tr><td>NASA POWER</td><td>~55×69 km</td><td>All 17 climate metrics</td><td>POWER API, free</td></tr>
+        <tr><td>NASA NEX-GDDP-CMIP6</td><td>0.25° (~25 km)</td><td>6 future climate scenarios</td><td>THREDDS / OPeNDAP, free</td></tr>
+        <tr><td>OCHA COD-AB</td><td>Vector</td><td>District boundary clipping</td><td>HDX, free</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Terrain metrics — all derived from SRTM</h3>
+  <div class="metric-list">
+    <div class="metric-row"><span class="metric-name">Elevation</span><span class="metric-unit">m — direct from DEM</span></div>
+    <div class="metric-row"><span class="metric-name">Slope</span><span class="metric-unit">% — gradient from DEM</span></div>
+    <div class="metric-row"><span class="metric-name">Aspect</span><span class="metric-unit">° — compass direction of slope</span></div>
+    <div class="metric-row"><span class="metric-name">TWI (Topographic Wetness Index)</span><span class="metric-unit">ln(flow accum / tan(slope))</span></div>
+    <div class="metric-row"><span class="metric-name">HAND (Height Above Nearest Drainage)</span><span class="metric-unit">m — flow-routed from DEM</span></div>
+    <div class="metric-row"><span class="metric-name">Flood Hazard</span><span class="metric-unit">0–1 — composite of HAND + TWI + slope</span></div>
+    <div class="metric-row"><span class="metric-name">Erosion Exposure</span><span class="metric-unit">0–100 — RUSLE R×K×LS (see below)</span></div>
+    <div class="metric-row"><span class="metric-name">Distance to Surface Water</span><span class="metric-unit">m — from SRTM flow accumulation, not OSM</span></div>
+  </div>
+
+  <h3>Erosion Exposure — how it's computed</h3>
+  <div class="card">
+    <p>RUSLE without cover and practice factors: what rain, soil, and slope would do to bare ground. Three components:</p>
+    <dl class="terms">
+      <dt>R — Rainfall erosivity</dt><dd>From NASA POWER precipitation data</dd>
+      <dt>K — Soil erodibility</dt><dd>From SoilGrids texture and organic carbon</dd>
+      <dt>LS — Slope length-steepness</dt><dd>From SRTM (slope_length assumed 50 m; no field boundaries in the data)</dd>
+    </dl>
+    <p>Result scaled 0–100 against the 95th percentile of the district. <strong>Important:</strong> it is not tonnes per hectare — the cover factor (what you grow) is deliberately excluded because that is what the farmer decides.</p>
+  </div>
+
+  <h3>Soil metrics — all from SoilGrids 2.0</h3>
+  <div class="metric-list">
+    <div class="metric-row"><span class="metric-name">Soil pH</span><span class="metric-unit">— measured</span></div>
+    <div class="metric-row"><span class="metric-name">Clay / Sand / Silt content</span><span class="metric-unit">% — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Soil Organic Carbon (SOC)</span><span class="metric-unit">g/kg — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Cation Exchange Capacity (CEC)</span><span class="metric-unit">cmol(+)/kg — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Bulk Density</span><span class="metric-unit">kg/dm³ — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Total Nitrogen</span><span class="metric-unit">g/kg — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Peat Depth</span><span class="metric-unit">cm — measured</span></div>
+    <div class="metric-row"><span class="metric-name">Soil Texture Class</span><span class="metric-unit">USDA class — derived from clay/sand/silt triangle</span></div>
+    <div class="metric-row"><span class="metric-name">Soil Drainage Class</span><span class="metric-unit">1–7 — derived from texture/bulk density/carbon</span></div>
+    <div class="metric-row"><span class="metric-name">Available Water Capacity (AWC)</span><span class="metric-unit">mm — derived from texture/carbon/bulk density</span></div>
+  </div>
+
+  <h3>What SoilGrids actually is</h3>
+  <div class="card">
+    <p>SoilGrids 2.0 is not a field survey. It is a machine learning model (random forests) trained on ~240,000 soil profiles from ISRIC's global database, with remote sensing and terrain data as predictors. The 250 m output is a spatial prediction, not a measurement. Each value comes with an uncertainty interval, though the platform uses the median prediction. This is worth knowing if someone asks how "accurate" the soil data is — it is as accurate as the ML model, which is high at the continental scale but smooths over local variation.</p>
+  </div>
+
+  <h3>Q&amp;A — Geospatial</h3>
+  <div class="qa-block">
+    <div class="qa-q">Why 250 m cells and not 30 m (SRTM's resolution)?</div>
+    <div class="qa-a">SoilGrids and MODIS are the coarsest scored datasets at 250 m. Using 30 m cells would imply soil data precision that the data doesn't have. The resolution was chosen to match the most limiting dataset, not the finest one.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Where does distance to water come from — is it from OpenStreetMap?</div>
+    <div class="qa-a">No. It is derived from the SRTM DEM's own flow accumulation — any cell that enough land drains into is counted as a watercourse. OSM supplies the base map tiles and nothing that is scored. This means unmapped drains still count, but dry gullies may also count.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Is pond water temperature measured by satellite?</div>
+    <div class="qa-a">No — there is no satellite product for a pond that doesn't exist yet. It is modelled: mean air temperature (POWER), corrected for elevation lapse rate (SRTM: 6.5°C per km), plus ~1°C for a shallow tropical pond. It moves with the climate scenario because it is derived at query time, not stored.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ CLIMATE ═══════════════════════════════ -->
+<div class="panel" id="tab-clim">
+
+  <p class="section-title">Your domain — Climate &amp; Meteorology Head</p>
+  <div class="alert alert-info">
+    <span class="icon">ℹ</span>
+    <div>Cover the 17 climate metrics, the POWER data source, the delta change method, the 6 CMIP6 models, the two SSP pathways, and the ET₀ derivation.</div>
+  </div>
+
+  <h3>NASA POWER — the observed baseline</h3>
+  <div class="card">
+    <dl class="terms">
+      <dt>Full name</dt><dd>Prediction Of Worldwide Energy Resources</dd>
+      <dt>Met component</dt><dd>MERRA-2 (Modern-Era Retrospective Analysis for Research and Applications, version 2)</dd>
+      <dt>Solar component</dt><dd>CERES (Clouds and the Earth's Radiant Energy System)</dd>
+      <dt>Record length</dt><dd>45 years of daily data (used for all climate statistics)</dd>
+      <dt>Grid resolution</dt><dd>~0.5° (~55 km N-S × 69 km E-W in the tropics)</dd>
+      <dt>Baseline period</dt><dd>1991–2020 climate normal (30-year WMO standard)</dd>
+      <dt>Access</dt><dd>Free REST API; no authentication required</dd>
+    </dl>
+  </div>
+
+  <h3>17 climate metrics — all from POWER</h3>
+  <div class="metric-list">
+    <div class="metric-row"><span class="metric-name">Mean annual temperature</span><span class="metric-unit">°C</span></div>
+    <div class="metric-row"><span class="metric-name">Hottest-month maximum</span><span class="metric-unit">°C</span></div>
+    <div class="metric-row"><span class="metric-name">Coolest-month minimum</span><span class="metric-unit">°C</span></div>
+    <div class="metric-row"><span class="metric-name">Diurnal temperature range</span><span class="metric-unit">°C</span></div>
+    <div class="metric-row"><span class="metric-name">Heat-stress days</span><span class="metric-unit">days/yr above crop heat threshold</span></div>
+    <div class="metric-row"><span class="metric-name">THI max (Temperature-Humidity Index)</span><span class="metric-unit">dimensionless — worst month</span></div>
+    <div class="metric-row"><span class="metric-name">Annual rainfall</span><span class="metric-unit">mm</span></div>
+    <div class="metric-row"><span class="metric-name">Driest-month rainfall</span><span class="metric-unit">mm</span></div>
+    <div class="metric-row"><span class="metric-name">Wettest-month rainfall</span><span class="metric-unit">mm</span></div>
+    <div class="metric-row"><span class="metric-name">Dry months per year</span><span class="metric-unit">months &lt;60 mm</span></div>
+    <div class="metric-row"><span class="metric-name">Longest dry spell</span><span class="metric-unit">days (90th percentile across years)</span></div>
+    <div class="metric-row"><span class="metric-name">Rainfall variability (CV)</span><span class="metric-unit">% — coefficient of variation, year to year</span></div>
+    <div class="metric-row"><span class="metric-name">Solar radiation</span><span class="metric-unit">MJ/m²/day — CERES-derived</span></div>
+    <div class="metric-row"><span class="metric-name">Relative humidity</span><span class="metric-unit">%</span></div>
+    <div class="metric-row"><span class="metric-name">Peak wind speed</span><span class="metric-unit">m/s — 98th percentile of daily max over 30 years</span></div>
+    <div class="metric-row"><span class="metric-name">Reference ET₀</span><span class="metric-unit">mm/yr — FAO-56 Penman-Monteith (derived)</span></div>
+    <div class="metric-row"><span class="metric-name">Annual water balance</span><span class="metric-unit">mm — rainfall minus ET₀</span></div>
+  </div>
+
+  <h3>ET₀ — how it's calculated</h3>
+  <div class="card">
+    <p><strong>Method:</strong> FAO-56 Penman-Monteith. This is the UN Food and Agriculture Organization's standard reference evapotranspiration formula — the same formula used globally for irrigation scheduling.</p>
+    <p><strong>Inputs from POWER:</strong> temperature (min/max), solar radiation, relative humidity, wind speed.</p>
+    <p><strong>Under future scenarios:</strong> Relative humidity is held constant (standard assumption for the humid tropics — air holds more water as it warms). The dew point is recomputed so RH stays unchanged. ET₀ then rises through the growing vapour pressure deficit. A Hargreaves cross-check (temperature-only formula) is computed independently as a sanity check. At 2070 SSP5-8.5: ET₀ rises from 1,209 to 1,286 mm (+6.4%).</p>
+  </div>
+
+  <h3>Climate scenarios</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Label in app</th><th>SSP</th><th>Period</th><th>IPCC pathway</th></tr></thead>
+      <tbody>
+        <tr><td>Today</td><td>—</td><td>1991–2020 observed</td><td>Baseline</td></tr>
+        <tr><td>2030 · middle road</td><td>SSP2-4.5</td><td>2021–2040</td><td>~current policy</td></tr>
+        <tr><td>2050 · middle road</td><td>SSP2-4.5</td><td>2041–2060</td><td>~current policy</td></tr>
+        <tr><td>2070 · middle road</td><td>SSP2-4.5</td><td>2061–2080</td><td>~current policy</td></tr>
+        <tr><td>2030 · high emissions</td><td>SSP5-8.5</td><td>2021–2040</td><td>Fossil-fuelled growth</td></tr>
+        <tr><td>2050 · high emissions</td><td>SSP5-8.5</td><td>2041–2060</td><td>Fossil-fuelled growth</td></tr>
+        <tr><td>2070 · high emissions</td><td>SSP5-8.5</td><td>2061–2080</td><td>Fossil-fuelled growth</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--fg-faint)">Model reference period: 1995–2014 (where CMIP6 historical runs end; IPCC AR6 standard).</p>
+
+  <h3>The 6 CMIP6 models — why these six</h3>
+  <div class="alert alert-accent">
+    <span class="icon">★</span>
+    <div>The models were chosen to <strong>span equilibrium climate sensitivity (ECS)</strong>, not to agree with each other. ECS is how much the Earth warms for a doubling of CO₂. Using models clustered in the middle would give a falsely narrow range of projections.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Model</th><th>ECS (°C)</th><th>Institution</th><th>Country</th></tr></thead>
+      <tbody>
+        <tr><td>INM-CM5-0</td><td>1.9 <span class="ecs-bar" style="width:19px"></span></td><td>INM</td><td>Russia</td></tr>
+        <tr><td>GFDL-ESM4</td><td>2.6 <span class="ecs-bar" style="width:26px"></span></td><td>NOAA GFDL</td><td>USA</td></tr>
+        <tr><td>MPI-ESM1-2-LR</td><td>3.0 <span class="ecs-bar" style="width:30px"></span></td><td>MPI-M</td><td>Germany</td></tr>
+        <tr><td>MRI-ESM2-0</td><td>3.2 <span class="ecs-bar" style="width:32px"></span></td><td>MRI</td><td>Japan</td></tr>
+        <tr><td>EC-Earth3</td><td>4.3 <span class="ecs-bar" style="width:43px"></span></td><td>EC-Earth Consortium</td><td>EU</td></tr>
+        <tr><td>UKESM1-0-LL</td><td>5.3 <span class="ecs-bar" style="width:53px"></span></td><td>MOHC</td><td>United Kingdom</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Delta change method — the key idea</h3>
+  <div class="card">
+    <p>CMIP6 models are biased for Borneo by 1–3°C in absolute temperature and hundreds of mm in rainfall. If we used their raw numbers, the model's bias (not climate change) would decide what grows.</p>
+    <p>Instead, we use only the <em>change</em>: future minus past, within the same model. Systematic biases cancel in that subtraction.</p>
+    <pre>Temperature:  projected = observed + (model_future − model_past)   [additive]
+Rainfall:     projected = observed × (model_future / model_past)   [multiplicative]</pre>
+    <p>Both computed <strong>month by month</strong> (12 change factors per model per variable). Applied <strong>day by day</strong> to all 45 years of observed weather. The result: a 45-year synthetic daily record for each future scenario.</p>
+    <p><strong>Why daily, not monthly means?</strong> Dry-spell length, heat-stress days, and extreme rainfall are tail statistics — invisible in a monthly mean. They can only be computed from a daily sequence.</p>
+  </div>
+
+  <h3>Projected changes for Sri Aman</h3>
+  <div class="tbl-wrap">
+    <table class="scenario-tbl">
+      <thead><tr><th>Scenario</th><th>Warming</th><th>Model range</th><th>Driest month</th><th>Wettest month</th></tr></thead>
+      <tbody>
+        <tr><td>2030 · SSP2-4.5</td><td class="up">+0.55 °C</td><td>+0.36 to +0.92</td><td class="dn">−6.2%</td><td class="up">+10.3%</td></tr>
+        <tr><td>2050 · SSP2-4.5</td><td class="up">+0.97 °C</td><td>+0.73 to +1.57</td><td class="dn">−2.5%</td><td class="up">+13.6%</td></tr>
+        <tr><td>2070 · SSP2-4.5</td><td class="up">+1.43 °C</td><td>+0.99 to +2.11</td><td class="dn">−11.1%</td><td class="up">+6.7%</td></tr>
+        <tr><td>2030 · SSP5-8.5</td><td class="up">+0.60 °C</td><td>+0.38 to +1.00</td><td class="dn">−6.7%</td><td class="up">+9.1%</td></tr>
+        <tr><td>2050 · SSP5-8.5</td><td class="up">+1.40 °C</td><td>+1.08 to +2.09</td><td class="dn">−3.8%</td><td class="up">+10.6%</td></tr>
+        <tr><td>2070 · SSP5-8.5</td><td class="up">+2.31 °C</td><td>+1.83 to +3.38</td><td class="dn">−4.7%</td><td class="up">+21.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--fg-faint)">The two pathways are nearly identical at 2030 and far apart at 2070 — this is how SSPs behave, as the emissions trajectories haven't yet diverged significantly by 2030.</p>
+
+  <h3>Important caveats to know</h3>
+  <div class="card">
+    <p><strong>Wind, humidity and radiation are held at today's values.</strong> The projections change temperature and rainfall only. Wind and radiation are the quantities CMIP6 models simulate least well, so they were not fetched.</p>
+    <p><strong>The model spread is not a confidence interval.</strong> Six models are six opinions. The range says how far apart they are, not the probability of a given outcome.</p>
+    <p><strong>Heat-stress days stay at zero in every scenario.</strong> Daily maxima in equatorial Borneo do not reach 35°C. This is correct. The THI (temperature-humidity index) does move — from 82.8 to 86.6 under SSP5-8.5 2070 — which matters for livestock and pond aquaculture.</p>
+    <p><strong>Dry spell lengths barely change despite daily computation.</strong> The 90th-percentile longest dry spell is 13 days in every scenario. The worst droughts are genuinely rainless — multiplying by a small factor doesn't interrupt them. This is a real finding, not a bug.</p>
+  </div>
+
+  <h3>Q&amp;A — Climate &amp; Met</h3>
+  <div class="qa-block">
+    <div class="qa-q">What is SSP and why are there two?</div>
+    <div class="qa-a">SSP = Shared Socioeconomic Pathway. It is the IPCC's framework for linking emissions trajectories to socioeconomic assumptions. SSP2-4.5 is roughly current policy (medium mitigation); SSP5-8.5 is a fossil-fuelled high-growth scenario — not the "worst case" but the high end for stress-testing. We use both so farmers can see the range of possible futures.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">How did you access the CMIP6 data?</div>
+    <div class="qa-a">Via OPeNDAP through NASA THREDDS. The files are global NetCDFs (one year per file, one variable per file, ~15 GB each globally). We fetched only a 24-cell bounding box over Sri Aman using an ASCII subset query — about 130 kB instead of 15 GB. The whole district costs the same as a single cell because CMIP6 files are chunked by time, not space.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Why not just use monthly climate projections?</div>
+    <div class="qa-a">Because the most dangerous climate signals are in the tails, not the means. Monthly averages hide dry-spell length, heat-stress days, and rainfall extremes — the things that actually kill crops. Applying change factors to daily data and recomputing everything from scratch is the only way to capture them.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ AGRICULTURE ══════════════════════════ -->
+<div class="panel" id="tab-agri">
+
+  <p class="section-title">Your domain — Agriculture Head</p>
+  <div class="alert alert-info">
+    <span class="icon">ℹ</span>
+    <div>Cover FAO land evaluation, the suitability scoring logic, the crop catalogue, rotation planning, disease rules, and the farmer priority system.</div>
+  </div>
+
+  <h3>FAO land evaluation — the framework</h3>
+  <div class="card">
+    <p>The platform adapts the FAO Framework for Land Evaluation (1976, still the global standard). Each crop has a set of requirements — optimal and absolute ranges for each environmental metric. Each metric is scored 0 to 1 based on how close the site's conditions are to optimal. The scores are combined into a single 0–100 figure. The class (S1/S2/S3/N1/N2) is assigned by where that figure falls.</p>
+    <p><strong>Key principle — Liebig's Law of the Minimum:</strong> The limiting factor governs, not the average. Good rainfall cannot compensate for wrong soil pH. This is why the platform uses a weighted geometric mean, not an arithmetic mean.</p>
+  </div>
+
+  <h3>How the suitability score is calculated</h3>
+  <div class="card">
+    <p><strong>Method:</strong> Weighted geometric mean (computed in SQL)</p>
+    <pre>score = EXP( SUM(weight × LN(MAX(metric_score, 0.02))) / SUM(weight) )</pre>
+    <p><strong>Floor of 0.02:</strong> Prevents one zero from destroying all ranking information. A cell with one completely failing metric still gets ranked, though it will score very low.</p>
+    <p><strong>25% minimum-factor pull:</strong> After the geometric mean, the single worst metric pulls the result 25% further down toward itself. Sharpens the "weakest link" signal.</p>
+    <p><strong>Group weights:</strong> Climate = 1.0, Terrain = 1.0, Soil = 1.0, Water = 1.0, Vegetation = 0.5. Vegetation gets half weight because NDVI records what is already growing — rewarding existing vegetation would disadvantage bare farmland.</p>
+  </div>
+
+  <h3>Limiting factors</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Severity</th><th>Metric score threshold</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge" style="background:#fef2f2;color:var(--danger);border-color:var(--danger)">Severe</span></td><td>&lt; 0.35</td><td>Critical limitation; will prevent viable production</td></tr>
+        <tr><td><span class="badge badge-warn">Moderate</span></td><td>0.35 – 0.60</td><td>Significant constraint; requires remediation</td></tr>
+        <tr><td><span class="badge" style="background:var(--surface2);color:var(--fg-soft);border-color:var(--border)">Slight</span></td><td>0.60 – 0.80</td><td>Minor limitation; manageable</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--fg-faint)">Up to 6 limiting factors reported per cell, worst first.</p>
+
+  <h3>Crop catalogue — 31 enterprises</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Seasonal crops (5)</h3>
+      <p style="margin:0;font-size:13px">Wet paddy, Hill paddy, Maize, Groundnut, Soybean</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Short-cycle vegetables (7)</h3>
+      <p style="margin:0;font-size:13px">Water spinach, Mustard greens, Tomato, Chilli, Cucumber, Long bean, Okra</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Perennial crops (8)</h3>
+      <p style="margin:0;font-size:13px">Oil palm, Rubber, Black pepper, Coconut, Sago palm, Cocoa, Durian, Banana</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Aquaculture (4)</h3>
+      <p style="margin:0;font-size:13px">Tilapia, African catfish, Striped catfish, Giant freshwater prawn</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Livestock (5)</h3>
+      <p style="margin:0;font-size:13px">Broiler chicken, Laying hen, Duck, Goat, Beef cattle</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint)">Cover crops (2)</h3>
+      <p style="margin:0;font-size:13px">Sunn hemp (<em>Crotalaria juncea</em>), Velvet bean (<em>Mucuna pruriens</em>)</p>
+    </div>
+  </div>
+
+  <h3>Rotation planner — the four axes</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Axis label in UI</th><th>What it measures</th><th>Unit</th></tr></thead>
+      <tbody>
+        <tr><td>What comes off the field</td><td>Mean suitability score per season; cover crops count as 0 (no harvest)</td><td>points / 100</td></tr>
+        <tr><td>Water over the sequence</td><td>Total water demand across all seasons</td><td>mm</td></tr>
+        <tr><td>What it leaves the soil</td><td>soilIndex: legume fraction (45%) + residue quality (35%) + family diversity (20%)</td><td>0–1</td></tr>
+        <tr><td>Pest-cycle break</td><td>Gap since the same plant family; 0 = same family, 1 = ≥3 seasons clear</td><td>0–1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Rotation rules — disease &amp; pest basis</h3>
+  <div class="card">
+    <p><strong>How rotation rules work:</strong> Each crop has a plant family. The planner checks the gap since the same family last appeared. Within the same family:</p>
+    <ul style="margin-left:16px;margin-top:6px;font-size:13px;color:var(--fg-soft)">
+      <li style="margin-bottom:4px"><strong>Fabaceae after Fabaceae:</strong> Harmful — reduces nitrogen fixation benefit, risk of Rhizobium imbalance</li>
+      <li style="margin-bottom:4px"><strong>Cucurbitaceae after Cucurbitaceae:</strong> Fusarium crown and root rot risk</li>
+      <li style="margin-bottom:4px"><strong>Albugo (white rust)</strong> after kangkung (Convolvulaceae)</li>
+      <li style="margin-bottom:4px"><strong>Scoring:</strong> 0 gaps (same family repeated) = 0.0, 1 season gap = 0.33, 2 seasons = 0.67, ≥3 seasons = 1.0 (full break)</li>
+    </ul>
+    <p><strong>Legume cap:</strong> More than half the rotation in legumes is not better — it has its own disease risk. The legume index caps at 1.0 when half the seasons are legumes.</p>
+  </div>
+
+  <h3>6 farmer priorities</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Priority</th><th>What it boosts</th><th>Highest multiplier</th></tr></thead>
+      <tbody>
+        <tr><td>Maximize yield</td><td>Solar radiation, SOC, CEC, soil pH, temperature</td><td>Solar radiation ×1.6</td></tr>
+        <tr><td>Conserve water</td><td>Driest month rainfall, dry spell, water balance, AWC</td><td>Driest month ×1.8</td></tr>
+        <tr><td>Build soil health</td><td>SOC, bulk density, CEC, nitrogen, slope, peat depth</td><td>SOC ×1.9</td></tr>
+        <tr><td>Avoid total loss</td><td>Flood hazard, HAND, rainfall variability, heat stress</td><td>Flood hazard ×2.0</td></tr>
+        <tr><td>Keep costs low</td><td>Soil pH, CEC, nitrogen, drainage, slope, TWI</td><td>Soil pH ×1.7</td></tr>
+        <tr><td>Work it with machinery</td><td>Slope, peat depth, bulk density, TWI</td><td>Slope ×2.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5 priority presets</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Preset</th><th>Dominant priorities</th><th>For</th></tr></thead>
+      <tbody>
+        <tr><td>Balanced</td><td>All at 0.5</td><td>No single objective dominates; starting point</td></tr>
+        <tr><td>Survive the bad years</td><td>Risk aversion=1.0, Water=0.9</td><td>Farmer who has already lost a crop</td></tr>
+        <tr><td>Commercial yield</td><td>Yield=1.0, Mechanisation=0.7</td><td>Maximise output, accept the input bill</td></tr>
+        <tr><td>Low capital</td><td>Low input cost=1.0, Risk=0.7, Water=0.7</td><td>Smallholder with no money for earthworks or pump</td></tr>
+        <tr><td>Rebuild the soil</td><td>Soil health=1.0, Water=0.6</td><td>Land that has been worked hard</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Key finding — wet paddy &amp; climate scenarios</h3>
+  <div class="alert alert-accent">
+    <span class="icon">★</span>
+    <div>
+      <strong>Wet paddy scores 1.00 on all climate metrics in every scenario.</strong> Its temperature, rainfall, and other climate inputs all sit inside the optimal range both today and in 2070 under high emissions. The score doesn't change — not because climate change doesn't matter, but because wet paddy's limits here are <strong>slope, flood hazard, and soil pH</strong>, none of which climate affects. Liebig's Law: the limiting factor governs, and the limiting factors aren't climate.
+    </div>
+  </div>
+
+  <h3>Q&amp;A — Agriculture</h3>
+  <div class="qa-block">
+    <div class="qa-q">How did you decide the suitability envelopes for each crop?</div>
+    <div class="qa-a">From published agronomic literature — FAO crop guidelines, IRRI rice production manuals, Sarawak DOA crop management guides, and peer-reviewed journal thresholds. The envelopes encode the conditions each crop has been found to need, not modelled relationships.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">Why is NDVI not used in the yield priority?</div>
+    <div class="qa-a">Deliberately excluded. NDVI records what is growing now. Scoring it would reward existing forest and penalise a paddy field photographed between seasons — recommending land because something else already has it. NDVI is shown as evidence in the site report, but land cover (not greenness) is what blocks unsuitable land use.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">How does disease factor into the suitability score?</div>
+    <div class="qa-a">Relative humidity and temperature together signal fungal disease pressure. Each crop's suitability envelope sets thresholds for these — a site that is persistently humid beyond the crop's tolerance gets a lower score on those metrics. The rotation planner adds a separate disease signal through the pest-break index (plant family rotation rules).</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">What does "put forward" mean on a rotation strategy?</div>
+    <div class="qa-a">"Put forward" is the strategy the platform recommends based on the farmer's stated priorities. It is not "best" in an absolute sense — it is the best match for what the farmer said they care about. Its gaps and risks sections are open by default because a farmer who reads only the recommendation should still see its limits.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ IT ═══════════════════════════════════ -->
+<div class="panel" id="tab-it">
+
+  <p class="section-title">Your domain — IT Head</p>
+  <div class="alert alert-info">
+    <span class="icon">ℹ</span>
+    <div>Cover the tech stack, the scoring engine, the database design, the scenario integrity check, and the hackathon static build.</div>
+  </div>
+
+  <h3>Tech stack</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Technology</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td>Backend (platform)</td><td>Laravel (PHP)</td><td>REST API, scoring engine, Artisan CLI for ingest</td></tr>
+        <tr><td>Frontend (platform)</td><td>Vue 3</td><td>Interactive map UI, scenario picker, rotation planner</td></tr>
+        <tr><td>Database</td><td>PostgreSQL</td><td>67,855 grid cells, climate normals, enterprise requirements</td></tr>
+        <tr><td>Hackathon build</td><td>Vue 3 + Vite (static)</td><td>Zero-install, runs in browser, all data embedded as JSON</td></tr>
+        <tr><td>Map tiles</td><td>Server-rendered tiles from scoring SQL</td><td>Colour-coded suitability map per scenario</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Database architecture</h3>
+  <div class="card">
+    <dl class="terms">
+      <dt><code>grid_cells</code></dt><dd>67,855 rows. One per 250m cell. Holds all terrain, soil, water, and vegetation columns (fixed — same regardless of scenario).</dd>
+      <dt><code>climate_normals</code></dt><dd>Holds the scenario-variable climate data: monthly normals per POWER grid point, per scenario. The scoring engine joins this to <code>grid_cells</code> at query time.</dd>
+      <dt><code>enterprise_requirements</code></dt><dd>One row per crop × metric. Defines the trapezoidal scoring envelope for each metric for each crop.</dd>
+      <dt><code>climate_scenarios</code></dt><dd>CMIP6 delta factors per model, per month, per variable. Used by <code>build-scenarios</code> to produce the rows in <code>climate_normals</code>.</dd>
+    </dl>
+    <p><strong>Water temperature:</strong> Not stored as a column — it is derived at query time from POWER air temperature, elevation (SRTM lapse rate), and a +1°C pond offset. This is why it follows the climate scenario automatically.</p>
+  </div>
+
+  <h3>Scoring engine — the core formula</h3>
+  <div class="card">
+    <p>Built as SQL, executed in PostgreSQL. The weighted geometric mean:</p>
+    <pre>EXP(
+  SUM(requirement_weight * LN(GREATEST(metric_score, 0.02)))
+  /
+  SUM(requirement_weight)
+)</pre>
+    <p>When priority sliders are applied, the engine adjusts each metric's weight before this formula:</p>
+    <pre>new_weight = old_weight × (1 + (multiplier − 1) × slider_value)</pre>
+    <p>Then all weights are normalised, so turning everything up is equivalent to turning nothing up. The normalisation happens automatically in the geometric mean's division by <code>SUM(weight)</code>.</p>
+  </div>
+
+  <h3>Key classes</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Does</th></tr></thead>
+      <tbody>
+        <tr><td><code>SuitabilityEngine.php</code></td><td>Builds and executes the scoring SQL; applies priority weights; computes limiting factors</td></tr>
+        <tr><td><code>ScenarioCatalogue.php</code></td><td>Checks whether each scenario has complete monthly normals at all sampling points before offering it in the UI</td></tr>
+        <tr><td><code>Metric.php</code> (enum)</td><td>Single source of truth: 44 metrics, their labels, units, groups, source datasets, and descriptions</td></tr>
+        <tr><td><code>ScenarioProjector.php</code></td><td>Applies CMIP6 delta factors to the 45-year daily POWER record</td></tr>
+        <tr><td><code>ClimateAggregator.php</code></td><td>One implementation of every climate statistic — used for both observed and projected records</td></tr>
+        <tr><td><code>NexGddpSource.php</code></td><td>THREDDS catalogue discovery + OPeNDAP ASCII requests; disk cache; back-off</td></tr>
+        <tr><td><code>SequenceAxes.php</code></td><td>Computes the four rotation comparison axes (return, soil, water, pest-break)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Scenario integrity — ScenarioCatalogue</h3>
+  <div class="card">
+    <p>Before the UI offers a scenario, <code>ScenarioCatalogue</code> checks that the <code>climate_normals</code> table has a complete set of 12 monthly normals at every POWER sampling point for that scenario. A scenario that failed mid-build (network error, partial ingest) would have silent holes — cells near one sampling point using baseline data, cells near another using future data — and the map would look plausible while being wrong. The catalogue prevents this by either showing a scenario completely or not at all. The tile endpoint also refuses a scenario the catalogue has not verified.</p>
+  </div>
+
+  <h3>Artisan ingest commands</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Command</th><th>Does</th></tr></thead>
+      <tbody>
+        <tr><td><code>tanamtenang:ingest-cmip6</code></td><td>Fetches CMIP6 change factors via OPeNDAP (~3,360 requests, ~1 hour, resumable)</td></tr>
+        <tr><td><code>tanamtenang:build-scenarios</code></td><td>Applies delta factors to observed POWER record; populates <code>climate_normals</code>; clears tile cache</td></tr>
+        <tr><td><code>tanamtenang:ingest-land-cover</code></td><td>Reads MODIS MCD12Q1 via ORNL DAAC subsetting; populates land cover column</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Hackathon static build (<code>hackathon/</code>)</h3>
+  <div class="card">
+    <p>A zero-install version of the platform. No server, no database — all 67,855 cells' data is embedded as compressed JSON inside the Vite bundle. Opens in any browser by double-clicking <code>index.html</code>.</p>
+    <p>It mirrors the main platform's scoring engine in TypeScript: the same weighted geometric mean formula, the same FAO classes, the same priority slider logic. The two can drift if config changes, so the hackathon build is a snapshot of the platform at submission time.</p>
+    <p><strong>Important:</strong> The hackathon directory contains a nested git repository (the full platform clone used to mirror the engine). This is excluded from the main repo's tracking via <code>.gitignore</code>.</p>
+  </div>
+
+  <h3>Q&amp;A — IT</h3>
+  <div class="qa-block">
+    <div class="qa-q">Why is the scoring done in SQL rather than application code?</div>
+    <div class="qa-a">Because the scoring is a sum over 44 metrics for 67,855 cells — that's 2.98 million multiplications. Doing this in a loop in PHP would be slow. PostgreSQL executes the weighted geometric mean as a single aggregation query across the full table, which is much faster. It also keeps the logic close to the data, which makes it auditable.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">How does changing a priority slider affect the map?</div>
+    <div class="qa-a">The slider value (0–1) is multiplied into each metric's weight via the formula: new_weight = old_weight × (1 + (multiplier − 1) × slider). The multipliers are defined per metric per priority in config (e.g. flood hazard gets ×2.0 for risk aversion). Then the scoring SQL re-runs with the adjusted weights. The geometry mean's normalization means turning all sliders up is the same as turning none up.</div>
+  </div>
+  <div class="qa-block">
+    <div class="qa-q">What stops a future scenario from silently using baseline data?</div>
+    <div class="qa-a">ScenarioCatalogue. It queries the database before returning the scenario list and excludes any scenario that doesn't have a complete set of monthly normals across all sampling points. The tile-rendering endpoint also rejects an unverified scenario ID rather than falling through to baseline rows.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ GLOSSARY ═══════════════════════════════ -->
+<div class="panel" id="tab-gloss">
+
+  <p class="section-title">Terms &amp; Definitions</p>
+  <input type="text" class="search-box" placeholder="Search terms…" id="gloss-search" aria-label="Search glossary">
+
+  <div id="gloss-list">
+    <div class="gloss-entry" data-terms="awc available water capacity soil">
+      <div class="gloss-term">AWC — Available Water Capacity <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">The volume of water (mm) the soil can store in the root zone that plants can actually access — above wilting point, below field capacity. Derived from SoilGrids texture, organic carbon, and bulk density. The soil's buffer against a dry spell.</div>
+    </div>
+    <div class="gloss-entry" data-terms="baseline today climate observed power">
+      <div class="gloss-term">Baseline <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">The 1991–2020 climate normal from NASA POWER. Thirty years of observed daily weather, averaged into monthly statistics for each metric. Called "Today" in the platform interface.</div>
+    </div>
+    <div class="gloss-entry" data-terms="bulk density soil compaction">
+      <div class="gloss-term">Bulk Density <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">How compacted the soil is, in kg/dm³. High values mean roots struggle to penetrate and water ponds on the surface. From SoilGrids. Also used to derive drainage class and AWC.</div>
+    </div>
+    <div class="gloss-entry" data-terms="cec cation exchange capacity nutrients soil">
+      <div class="gloss-term">CEC — Cation Exchange Capacity <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">The soil's ability to hold positively charged nutrient ions (calcium, magnesium, potassium) instead of letting them leach away with rainfall. Measured in cmol(+)/kg. From SoilGrids. High CEC = more fertile, lower fertiliser requirements.</div>
+    </div>
+    <div class="gloss-entry" data-terms="cmip6 climate model coupled">
+      <div class="gloss-term">CMIP6 <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">Coupled Model Intercomparison Project Phase 6. The latest coordinated set of global climate model runs used in the IPCC's Sixth Assessment Report (AR6). The platform uses six models from CMIP6 to produce future scenarios.</div>
+    </div>
+    <div class="gloss-entry" data-terms="delta change perturbation method climate projection">
+      <div class="gloss-term">Delta Change Method <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">A method for constructing future climate scenarios. Instead of using CMIP6 model outputs directly (which are biased for Borneo), only the change between the model's future and its own past is used. That change is then applied to the observed weather record. Temperature: additive. Rainfall: multiplicative. Applied month by month, day by day.</div>
+    </div>
+    <div class="gloss-entry" data-terms="drainage class soil water">
+      <div class="gloss-term">Drainage Class <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">How readily water leaves the soil profile, coded 1 (very poorly drained) to 7 (excessively drained). Derived from SoilGrids texture, bulk density, and organic carbon. Very poorly drained soils suit wet paddy but not vegetables; excessively drained soils need irrigation.</div>
+    </div>
+    <div class="gloss-entry" data-terms="ecs equilibrium climate sensitivity temperature warming">
+      <div class="gloss-term">ECS — Equilibrium Climate Sensitivity <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">How much the global mean temperature would eventually increase for a doubling of atmospheric CO₂. Used to characterise the "strength" of a climate model's warming response. The six models in the platform span ECS from 1.9 to 5.3°C, covering the full credible range.</div>
+    </div>
+    <div class="gloss-entry" data-terms="et0 evapotranspiration penman monteith fao water demand">
+      <div class="gloss-term">ET₀ — Reference Evapotranspiration <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">The amount of water a reference grass crop would lose to the atmosphere in a year. Derived using the FAO-56 Penman-Monteith formula from POWER temperature, solar radiation, humidity, and wind. Represents the demand side of the water budget.</div>
+    </div>
+    <div class="gloss-entry" data-terms="fao land evaluation suitability framework">
+      <div class="gloss-term">FAO Land Evaluation <span class="badge badge-agri">Agriculture</span></div>
+      <div class="gloss-def">Framework for Land Evaluation (FAO, 1976). The methodology behind the platform's suitability classes. Defines how to match land characteristics to crop requirements, and how to assign suitability classes (S1/S2/S3/N1/N2) based on the degree of match.</div>
+    </div>
+    <div class="gloss-entry" data-terms="flood hazard terrain water">
+      <div class="gloss-term">Flood Hazard <span class="badge badge-geo">Terrain</span></div>
+      <div class="gloss-def">A 0–1 composite index of flood exposure, derived from HAND (height above drainage), TWI (topographic wetness), and slope. 0 = safe; 1 = floods regularly. This metric gets a ×2.0 multiplier under the "Avoid total loss" priority — the highest multiplier in the platform.</div>
+    </div>
+    <div class="gloss-entry" data-terms="hand height above nearest drainage terrain">
+      <div class="gloss-term">HAND — Height Above Nearest Drainage <span class="badge badge-geo">Terrain</span></div>
+      <div class="gloss-def">The vertical distance (m) from each cell to the nearest stream or drainage channel, as determined by routing water downhill through the SRTM DEM. Cells with low HAND flood first and drain last. Distinct from elevation above sea level.</div>
+    </div>
+    <div class="gloss-entry" data-terms="liebig minimum law of minimum limiting factor">
+      <div class="gloss-term">Liebig's Law of the Minimum <span class="badge badge-agri">Agriculture</span></div>
+      <div class="gloss-def">The principle that growth is controlled by the most limiting factor, not the average of all factors. A plant cannot grow on the average of good rainfall and wrong soil pH. This is why the platform uses a weighted geometric mean: one bad metric drags the whole score down. Named after Justus von Liebig (1840).</div>
+    </div>
+    <div class="gloss-entry" data-terms="merra2 reanalysis nasa met meteorology">
+      <div class="gloss-term">MERRA-2 <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">Modern-Era Retrospective Analysis for Research and Applications, Version 2. NASA's atmospheric reanalysis product — a model run that assimilates decades of observations into a coherent gridded dataset. The meteorological backbone of NASA POWER.</div>
+    </div>
+    <div class="gloss-entry" data-terms="modis ndvi vegetation index satellite">
+      <div class="gloss-term">MODIS <span class="badge badge-geo">Satellite</span></div>
+      <div class="gloss-def">Moderate Resolution Imaging Spectroradiometer. NASA instrument on the Terra and Aqua satellites. The platform uses three MODIS products: MOD13Q1 (250 m NDVI), MCD12Q1 (500 m land cover), and MOD11A2 (1 km daytime land surface temperature).</div>
+    </div>
+    <div class="gloss-entry" data-terms="ndvi normalised vegetation index greenness modis">
+      <div class="gloss-term">NDVI — Normalised Difference Vegetation Index <span class="badge badge-geo">Satellite</span></div>
+      <div class="gloss-def">A measure of vegetation greenness from MODIS (MOD13Q1), ranging −1 to +1. The platform uses mean NDVI and NDVI amplitude (seasonal swing). It is shown as evidence but deliberately excluded from the yield priority multipliers — NDVI records what grows now, not what could grow.</div>
+    </div>
+    <div class="gloss-entry" data-terms="nex gddp cmip6 nasa downscaled bias corrected">
+      <div class="gloss-term">NEX-GDDP-CMIP6 <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">NASA Earth Exchange Global Daily Downscaled Projections, CMIP6 edition. Daily, 0.25° (~25 km), bias-corrected climate model outputs for all CMIP6 scenarios. Served by NASA NCCS over THREDDS/OPeNDAP. The source of all six future scenarios in the platform.</div>
+    </div>
+    <div class="gloss-entry" data-terms="opendap thredds netcdf data access protocol">
+      <div class="gloss-term">OPeNDAP <span class="badge badge-it">IT</span></div>
+      <div class="gloss-def">Open-source Protocol for Data Access and Population. A protocol for requesting subsets of large scientific datasets over the web without downloading the whole file. The platform uses it to fetch a 24-cell bounding box (~130 kB) from NEX-GDDP files that are ~15 GB globally.</div>
+    </div>
+    <div class="gloss-entry" data-terms="peat depth carbon soil">
+      <div class="gloss-term">Peat Depth <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">Depth (cm) of peat in the soil. Deep peat (>50 cm) subsides and acidifies when drained, releases large amounts of CO₂, and is a major carbon store. Important for Sri Aman, which has areas of peat swamp forest. From SoilGrids.</div>
+    </div>
+    <div class="gloss-entry" data-terms="pest break index rotation disease">
+      <div class="gloss-term">Pest-Break Index <span class="badge badge-agri">Agriculture</span></div>
+      <div class="gloss-def">A 0–1 score measuring how well a rotation disrupts pest and disease cycles. Computed from the gap between crops of the same plant family. 0 = same family in consecutive seasons; 1 = three or more seasons since the same family. Averaged across all seasons in the rotation.</div>
+    </div>
+    <div class="gloss-entry" data-terms="power nasa climate energy prediction api">
+      <div class="gloss-term">NASA POWER <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">Prediction Of Worldwide Energy Resources. NASA's publicly available daily climate dataset combining MERRA-2 meteorological reanalysis and CERES satellite solar radiation. Covers 45+ years, ~55×69 km grid. The source of all 17 climate metrics in the platform. Free REST API, no authentication.</div>
+    </div>
+    <div class="gloss-entry" data-terms="rusle erosion rainfall slope erodibility">
+      <div class="gloss-term">RUSLE <span class="badge badge-geo">Terrain</span></div>
+      <div class="gloss-def">Revised Universal Soil Loss Equation. The formula for estimating erosion risk from rainfall erosivity (R), soil erodibility (K), slope length-steepness (LS), cover (C), and practice (P). The platform computes R×K×LS only — C and P are what the farmer decides, so they are excluded.</div>
+    </div>
+    <div class="gloss-entry" data-terms="scenario catalogue validation integrity database">
+      <div class="gloss-term">ScenarioCatalogue <span class="badge badge-it">IT</span></div>
+      <div class="gloss-def">A Laravel class that checks whether each climate scenario has complete monthly normals across all sampling points before allowing the UI to offer it. Prevents a half-built scenario from silently using baseline data for some cells. A scenario is either complete or absent — no partial states.</div>
+    </div>
+    <div class="gloss-entry" data-terms="smap soil moisture active passive satellite nasa">
+      <div class="gloss-term">SMAP L4 <span class="badge badge-geo">Satellite</span></div>
+      <div class="gloss-def">Soil Moisture Active Passive Level 4, 9 km resolution. NASA satellite product combining microwave soil moisture observations with a land surface model. The source of mean soil moisture and dry-season soil moisture in the platform.</div>
+    </div>
+    <div class="gloss-entry" data-terms="soilgrids isric soil machine learning predictions">
+      <div class="gloss-term">SoilGrids 2.0 <span class="badge badge-geo">Soil</span></div>
+      <div class="gloss-def">ISRIC's global soil property predictions at 250 m, generated by random forest ML models trained on ~240,000 soil profiles with remote sensing and terrain predictors. The source of all 12 soil metrics. Each output is a probabilistic prediction, not a measurement.</div>
+    </div>
+    <div class="gloss-entry" data-terms="soc soil organic carbon health">
+      <div class="gloss-term">SOC — Soil Organic Carbon <span class="badge badge-agri">Soil</span></div>
+      <div class="gloss-def">Organic carbon content of the topsoil, measured in g/kg. The core measure of soil health, structure, and water-holding capacity. Gets the highest multiplier (×1.9) under the "Build soil health" priority. From SoilGrids.</div>
+    </div>
+    <div class="gloss-entry" data-terms="ssp shared socioeconomic pathway emissions ipcc">
+      <div class="gloss-term">SSP — Shared Socioeconomic Pathway <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">IPCC framework linking future emissions to socioeconomic development storylines. SSP2-4.5 = "Middle of the road" (roughly current policy, moderate mitigation). SSP5-8.5 = "Fossil-fuelled development" (high emissions; not worst case but high end). The number after the hyphen (4.5, 8.5) is the radiative forcing in W/m² by 2100.</div>
+    </div>
+    <div class="gloss-entry" data-terms="srtm shuttle radar topography elevation dem">
+      <div class="gloss-term">SRTM — Shuttle Radar Topography Mission <span class="badge badge-geo">Terrain</span></div>
+      <div class="gloss-def">30 m (1 arc-second) digital elevation model from a February 2000 Space Shuttle mission. The source of all terrain metrics: slope, aspect, TWI, HAND, flood hazard, erosion exposure (LS component), and distance to water. Free via NASA EarthData.</div>
+    </div>
+    <div class="gloss-entry" data-terms="thi temperature humidity index livestock heat stress">
+      <div class="gloss-term">THI — Temperature-Humidity Index <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">A combined measure of thermal stress in humid conditions. In humid air, evaporative cooling is impaired — animals stop gaining weight and ponds lose dissolved oxygen long before the thermometer looks alarming. Heat-stress days (°C threshold) stay at zero in Borneo, but THI max does rise under future scenarios (82.8 → 86.6 under SSP5-8.5 2070).</div>
+    </div>
+    <div class="gloss-entry" data-terms="twi topographic wetness index terrain water">
+      <div class="gloss-term">TWI — Topographic Wetness Index <span class="badge badge-geo">Terrain</span></div>
+      <div class="gloss-def">ln(flow accumulation / tan(slope)). A terrain index indicating how strongly the shape of the land concentrates water at each cell. High TWI cells stay waterlogged and are prone to saturation. Derived from SRTM flow accumulation.</div>
+    </div>
+    <div class="gloss-entry" data-terms="water balance annual deficit surplus">
+      <div class="gloss-term">Water Balance (Annual) <span class="badge badge-clim">Climate</span></div>
+      <div class="gloss-def">Annual rainfall minus annual ET₀. Negative values mean the site runs a water deficit — evaporation demands more than falls as rain — and irrigation or water storage is needed. Important for dryland crops in drier parts of the district.</div>
+    </div>
+    <div class="gloss-entry" data-terms="weighted geometric mean aggregation liebig">
+      <div class="gloss-term">Weighted Geometric Mean <span class="badge badge-it">IT</span></div>
+      <div class="gloss-def">The aggregation method used to combine individual metric scores into one overall suitability score. Unlike an arithmetic mean, one low score drags the entire result down — encoding Liebig's Law. Formula: exp(Σ(weight × ln(score)) / Σ(weight)). Computed in SQL.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('tab-' + target);
+    if (panel) panel.classList.add('active');
+    try { localStorage.setItem('tt-tab', target); } catch(e){}
+  });
+});
+
+// Restore last tab
+try {
+  const saved = localStorage.getItem('tt-tab');
+  if (saved) {
+    const btn = document.querySelector(`.tab-btn[data-tab="${saved}"]`);
+    if (btn) btn.click();
+  }
+} catch(e){}
+
+// Glossary search
+const searchInput = document.getElementById('gloss-search');
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    document.querySelectorAll('#gloss-list .gloss-entry').forEach(entry => {
+      const text = (entry.dataset.terms || '') + ' ' + entry.textContent.toLowerCase();
+      entry.style.display = !q || text.includes(q) ? '' : 'none';
+    });
+  });
+}
+</script>
+
+</body></html>
